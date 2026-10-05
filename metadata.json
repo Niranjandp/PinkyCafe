@@ -1,0 +1,6 @@
+{
+  "name": "Pinky Cafe - Upscale Aesthetic, Everyday Prices",
+  "description": "A stylish, Instagram-worthy sanctuary serving artisanal lattes, specialty brunch, and fresh pastries at refreshingly affordable prices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
