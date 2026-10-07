@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, CreditCard, Smartphone, Store, Clock, QrCode, Sparkles } from 'lucide-react';
+import { X, CheckCircle2, CreditCard, Smartphone, Store, Sparkles } from 'lucide-react';
 import { CartItem, PlacedOrder } from '../types';
 
 interface CheckoutModalProps {
@@ -21,13 +21,24 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   tip,
   onOrderSuccess,
 }) => {
-  if (!isOpen) return null;
-
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'apple-pay' | 'counter'>('apple-pay');
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedOrder, setCompletedOrder] = useState<PlacedOrder | null>(null);
+
+  // Reset form state whenever the modal is closed so it's fresh on reopen
+  useEffect(() => {
+    if (!isOpen) {
+      setCustomerName('');
+      setCustomerPhone('');
+      setPaymentMethod('apple-pay');
+      setIsProcessing(false);
+      setCompletedOrder(null);
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
 
   const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   const tax = subtotal * 0.08;

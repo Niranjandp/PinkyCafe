@@ -106,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="relative rounded-2xl overflow-hidden border border-[#F0D5DB] shadow-xl bg-white aspect-[4/3] lg:aspect-[4/3.4]">
                 {!imageError ? (
                   <img
-                    src="/src/assets/images/hero_pinky_cafe_interior_1791181089083.jpg"
+                    src="/images/hero_pinky_cafe_interior_1791181089083.jpg"
                     alt="Pinky Cafe aesthetic interior with soft blush velvet fluted banquettes, terrazzo tables, and glowing brass lights"
                     referrerPolicy="no-referrer"
                     onError={() => setImageError(true)}

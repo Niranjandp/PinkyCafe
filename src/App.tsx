@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MenuSection } from './components/MenuSection';
@@ -20,6 +20,48 @@ export default function App() {
   const [checkoutTableNumber, setCheckoutTableNumber] = useState('');
   const [checkoutTip, setCheckoutTip] = useState(1.00);
   const [activeSection, setActiveSection] = useState('home');
+  // Track whether the user clicked a nav link so scroll-spy doesn't
+  // immediately override the click-selected section during the smooth scroll.
+  const clickedSectionRef = useRef<string | null>(null);
+
+  // Scroll-spy: watch section visibility with IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ['menu', 'combos', 'reserve', 'photo-spots', 'story'];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            // Only update if no programmatic click navigation is in flight
+            if (!clickedSectionRef.current) {
+              setActiveSection(id);
+            }
+          }
+        },
+        { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    // Clear the clicked-section lock once the user starts scrolling manually
+    const handleScroll = () => {
+      if (clickedSectionRef.current) {
+        clickedSectionRef.current = null;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Subtle floating toast notification
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -126,6 +168,7 @@ export default function App() {
   };
 
   const scrollToSection = (id: string) => {
+    clickedSectionRef.current = id;
     setActiveSection(id);
     if (id === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -135,7 +178,7 @@ export default function App() {
     if (el) {
       const topOffset = 80;
       const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',

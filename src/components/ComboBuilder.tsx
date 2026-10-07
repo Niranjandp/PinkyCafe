@@ -12,28 +12,28 @@ const DRINK_OPTIONS = [
     name: 'Pink Velvet Rose Latte',
     price: 4.20,
     desc: 'Oat milk, organic rose water, edible petals',
-    image: '/src/assets/images/pink_signature_latte_1791181103883.jpg',
+    image: '/images/pink_signature_latte_1791181103883.jpg',
   },
   {
     id: 'c-drink-2',
     name: 'Iced Strawberry Cloud Matcha',
     price: 4.50,
     desc: 'Ceremonial Uji matcha, macerated fresh berries',
-    image: '/src/assets/images/pink_signature_latte_1791181103883.jpg',
+    image: '/images/pink_signature_latte_1791181103883.jpg',
   },
   {
     id: 'c-drink-3',
     name: 'Velvet Flat White',
     price: 3.40,
     desc: 'Double ristretto, silky microfoam art',
-    image: '/src/assets/images/hero_pinky_cafe_interior_1791181089083.jpg',
+    image: '/images/hero_pinky_cafe_interior_1791181089083.jpg',
   },
   {
     id: 'c-drink-4',
     name: 'Ruby Hibiscus Spritz',
     price: 3.50,
     desc: 'Chilled floral botanicals, pink citrus',
-    image: '/src/assets/images/aesthetic_cafe_corner_1791181141814.jpg',
+    image: '/images/aesthetic_cafe_corner_1791181141814.jpg',
   },
 ];
 
@@ -43,21 +43,21 @@ const FOOD_OPTIONS = [
     name: 'French Butter Croissant',
     price: 2.80,
     desc: '72 flaky layers, Normandy butter',
-    image: '/src/assets/images/strawberry_croissant_pastry_1791181128645.jpg',
+    image: '/images/strawberry_croissant_pastry_1791181128645.jpg',
   },
   {
     id: 'c-food-2',
     name: 'Strawberry Mascarpone Croissant',
     price: 3.80,
     desc: 'Fresh whipped cream & strawberries',
-    image: '/src/assets/images/strawberry_croissant_pastry_1791181128645.jpg',
+    image: '/images/strawberry_croissant_pastry_1791181128645.jpg',
   },
   {
     id: 'c-food-3',
     name: 'Smashed Avocado Tartine (+1.20)',
     price: 4.80,
     desc: 'Farm egg, avocado, edible blossoms',
-    image: '/src/assets/images/avocado_brioche_brunch_1791181115766.jpg',
+    image: '/images/avocado_brioche_brunch_1791181115766.jpg',
     addon: 1.20,
   },
   {
@@ -65,7 +65,7 @@ const FOOD_OPTIONS = [
     name: 'Rose & Cardamom Knot',
     price: 3.20,
     desc: 'Swedish spiced morning brioche bun',
-    image: '/src/assets/images/strawberry_croissant_pastry_1791181128645.jpg',
+    image: '/images/strawberry_croissant_pastry_1791181128645.jpg',
   },
 ];
 

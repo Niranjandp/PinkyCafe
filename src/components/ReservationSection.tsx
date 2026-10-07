@@ -202,6 +202,7 @@ export const ReservationSection: React.FC = () => {
                 <input
                   type="date"
                   value={formData.date}
+                  min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                   className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#ECD0D6] bg-white text-[#2C1E21] focus:ring-1 focus:ring-[#9E3852] focus:border-[#9E3852] focus:outline-hidden"
                 />
